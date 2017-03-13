@@ -3,6 +3,14 @@
 This program randomizes source games that were made prior 2007.
 It can randomize sounds, textures, and models.
 
+##Dependencies
+System.Windows.Forms:[Comes with .NET]
+
+NAudio: https://www.nuget.org/packages/NAudio/
+
+##Compiling
+The executible requires the contents of bin.zip to be extracted. Once done, copy bin to the root of the executible.
+
 ##History
 This is a project that I started a year ago.
 It was at first a way of making an even older program idea work by including textures along with the sounds in the randomization.
