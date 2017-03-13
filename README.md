@@ -5,6 +5,7 @@ It can randomize sounds, textures, and models.
 
 ##Dependencies
 System.Windows.Forms:[Comes with .NET]
+
 NAudio: https://www.nuget.org/packages/NAudio/
 
 ##Compiling
