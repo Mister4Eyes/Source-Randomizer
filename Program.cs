@@ -19,6 +19,7 @@ namespace Hl2_Randomizer
         static TaskFactory tf = new TaskFactory();
         static string title = "";
         static bool verbose;
+		static bool isolateVoice;
 
         #region functions
         static bool isCustom(FileInfo fi)
@@ -281,6 +282,7 @@ namespace Hl2_Randomizer
                 //Sets all info to 0 in order to not have the randomizer randomize it again
                 fileTypes[wavLoc] = new FileInfo[0];
             }
+
             if(mp3Loc != -1)
             {
                 files.AddRange(fileTypes[mp3Loc]);
@@ -291,12 +293,31 @@ namespace Hl2_Randomizer
 
             foreach (FileInfo fi in files)
             {
-                if (!((Repaint ^ isCustom(fi)) & Repaint))
+                if (!((Repaint ^ isCustom(fi)) && Repaint))
                 {
                     assets.Add(fi);
                 }
             }
-            if(assets.Count > 0)
+
+			List<FileInfo> Voice = new List<FileInfo>();
+			List<FileInfo> Sound = new List<FileInfo>();
+
+			if (isolateVoice)
+			{
+				foreach (FileInfo fi in assets)
+				{
+					if (fi.FullName.Contains("vo"))
+					{
+						Voice.Add(fi);
+					}
+					else
+					{
+						Sound.Add(fi);
+					}
+				}
+			}
+
+			if (assets.Count > 0)
             {
                 foreach (FileInfo fi in files)
                 {
@@ -309,16 +330,39 @@ namespace Hl2_Randomizer
                         {
                             File.Delete(newFil);
                         }
-                        failure:
-                        FileInfo randFile = assets[r.Next(assets.Count)];
+
+						failure:
+
+						FileInfo randFile;
+
+						if (isolateVoice)
+						{
+							//Checks if in voice.
+							if (Voice.Contains(fi))
+							{
+								randFile = Voice[r.Next(Voice.Count)];
+							}
+							else
+							{
+								randFile = Sound[r.Next(Sound.Count)];
+							}
+						}
+						else
+						{
+							//Goes about your day normally
+							randFile = assets[r.Next(assets.Count)];
+						}
+
                         if (!Directory.Exists(newDir))
                         {
                             Directory.CreateDirectory(newDir);
                         }
+
                         if (verbose)
                         {
                             Console.WriteLine(fi.Name);
                         }
+
                         if (fi.Extension == randFile.Extension)
                         {
                             File.Copy(randFile.FullName, newFil);
@@ -534,7 +578,8 @@ namespace Hl2_Randomizer
                                                            "Force VTF conversion",
                                                             "Output files as VPK",
                                                       "Run game after completion",
-                                                                   "Repaint Mode"}, "Options:");
+                                                                   "Repaint Mode",
+																  "Isolate Voice"}, "Options:");
             bool swapNormals = options[3];
             bool forceAsset = options[5];
             bool forceVTF = options[6];
@@ -545,6 +590,8 @@ namespace Hl2_Randomizer
             bool advanced = options[0];
             bool beep = options[1];
             bool RepaintMode = options[9];
+			isolateVoice = options[10];
+
             //Gets the directory info in the specified files
             DirectoryInfo output = new DirectoryInfo(output_Directory);
             bool sounds = false;
@@ -559,39 +606,37 @@ namespace Hl2_Randomizer
                 models = options[2];
                 if (models)
                 {
-                    retry:
-                    Console.Clear();
-                    Console.WriteLine("Enter strength of model randomization \n(a value between 0 and 1 where 1 is all models swapped and 0 is none)");
-                    
-                    string str = Console.ReadLine();
-                    double num;
-                    if (double.TryParse(str, out num))
-                    {
-                        if(0 <= num && num <= 1)
-                        {
-                            strength = num;
-                        }
-                        else
-                        {
-                            goto retry;
-                        }
-                    }
-                    else
-                    {
-                        goto retry;
-                    }
+					while (true)
+					{
+						Console.Clear();
+						Console.WriteLine("Enter strength of model randomization \n(a value between 0 and 1 where 1 is all models swapped and 0 is none)");
+
+						string str = Console.ReadLine();
+						double num;
+						if (double.TryParse(str, out num))
+						{
+							if (0 <= num && num <= 1)
+							{
+								strength = num;
+								break;
+							}
+						}
+					}
                 }
             }
             //gets files
             DirectoryInfo[] dirs = output.GetDirectories();
             string[] strs = new string[dirs.Length];
+
             for(int i = 0; i < dirs.Length; i++)
             {
                 strs[i] = dirs[i].Name;
             }
+
             int directory = FancyInterface.fancyItemSelect(strs, "Select Game Directory");
             DirectoryInfo assetFolder = new DirectoryInfo(input_Directory + "\\"+dirs[directory].Name);
             appendToTitle(" (" + dirs[directory].Name + ")");
+
             if (assetFolder.Exists)
             {
                 if (forceAsset)
@@ -600,7 +645,6 @@ namespace Hl2_Randomizer
                     Directory.Delete(assetFolder.FullName, true);
                     extractAssets(output, assetFolder);
                 }
-
             }
             else
             {
@@ -710,15 +754,16 @@ namespace Hl2_Randomizer
             if (new DirectoryInfo(output + "\\" + dirs[directory].Name + "\\custom").Exists)
             {
                 Console.WriteLine("Clearing old randomization");
-                retry:
-                try
-                {
-                    Directory.Delete(output + "\\" + dirs[directory].Name + "\\custom", true);
-                }
-                catch(Exception)
-                {
-                    goto retry;
-                }
+				while (true)
+				{
+					try
+					{
+						Directory.Delete(output + "\\" + dirs[directory].Name + "\\custom", true);
+						break;
+					}
+					catch (Exception) { /*Suppresses Exceptions*/ }
+				}
+
                 Directory.CreateDirectory(output + "\\" + dirs[directory].Name + "\\custom");
             }
             Console.WriteLine("Adding files...");
@@ -741,12 +786,13 @@ namespace Hl2_Randomizer
             {
                 for(int j = 0; j < fileTypes[i].Length; j++)
                 {
-                    if (!((RepaintMode ^ isCustom(fileTypes[i][j])) & RepaintMode))
+                    if (!((RepaintMode ^ isCustom(fileTypes[i][j])) && RepaintMode))
                     {
                         assets.Add(fileTypes[i][j]);
                     }
                 }
             }
+
             if(assets.Count > 0)
             {
                 for (int i = 0; i < fileTypes.Length; i++)
