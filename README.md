@@ -8,6 +8,7 @@ This is a project that I started a year ago.
 It was at first a way of making an even older program idea work by including textures along with the sounds in the randomization.
 It ended up being a success and has been used by many people over youtube, most notably Vinesauce.
 Later on, I declared the project dead as I went on to make it's predecessor. Long story short the predecessor ended up being too ambitious and went nowhere.
+Today I am adding in things I always wanted to add into it and make it more available to the world.
 
 ##A warning to new contributors
 This project was never meant to be shared with anyone in a semi-professional manner.
