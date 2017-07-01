@@ -7,7 +7,7 @@ It can randomize sounds, textures, and models.
 System.Windows.Forms:[Comes with .NET]
 
 NAudio: https://www.nuget.org/packages/NAudio/
-
+Lame  : https://www.nuget.org/packages/NAudio.Lame/
 ## Compiling
 The executible requires the contents of bin.zip to be extracted. Once done, copy bin to the root of the executible.
 
