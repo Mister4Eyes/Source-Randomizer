@@ -1,0 +1,144 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{C4722388-76BC-4883-8AFB-F739A4774045}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>source_randomizer</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.1.8.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Lame, Version=1.0.3.3048, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Lame.1.0.4\lib\net20\NAudio.Lame.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvDir.cs" />
+    <Compile Include="AudioWriters.cs" />
+    <Compile Include="FancyUI.cs" />
+    <Compile Include="Improved_Extraction.cs" />
+    <Compile Include="Lame.cs" />
+    <Compile Include="ModelHexer.cs" />
+    <Compile Include="Mp3Writer.cs" />
+    <Compile Include="Mp3WriterConfig.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="WaveNative.cs" />
+    <Compile Include="WriterConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\objects\04\f8ebef695585b19a5ac95969abbdf36e294fa0" />
+    <None Include=".git\objects\07\181ef8fd993416cc3dddb6b5ab82e8227b2a3a" />
+    <None Include=".git\objects\17\96cb39119cd36791970c7002126a1b6a3352b6" />
+    <None Include=".git\objects\1b\5a2aea4864a27434dee66f0de1e96937dd8295" />
+    <None Include=".git\objects\1c\a04fb8139f3ab508405a76ccd823f70537c52e" />
+    <None Include=".git\objects\1e\174d87abc57c62d1b7190add1c65cf5bf8478e" />
+    <None Include=".git\objects\1f\8f5c41d56a04a50872a72c1159c331b7b37305" />
+    <None Include=".git\objects\2c\5bc55347c4a4b49eea51f8e7b7e3657f65aeb0" />
+    <None Include=".git\objects\2e\ff414cfa678de35c0b21eddfe40af2acda6e53" />
+    <None Include=".git\objects\38\2049a3acc9d2e9b6189c72da1c8a79c3d915da" />
+    <None Include=".git\objects\3e\93e316f1fb49052844dc2d5c209cceebcf2ce3" />
+    <None Include=".git\objects\49\ce89a67ad1e8d275bc67cd8d1c6569b731e4ca" />
+    <None Include=".git\objects\52\29195fca54d8b290318b90a03cfcc988dd95a3" />
+    <None Include=".git\objects\5b\9ef79521b9e8257561f4e46626d510ba6936c7" />
+    <None Include=".git\objects\5b\cb913d790a125c05cec9b3c07e858e2b699189" />
+    <None Include=".git\objects\73\9493b2a535dffd9987b637a2029f50dcfc8493" />
+    <None Include=".git\objects\74\377d42f762cfa1ef2e61dedcbfd493f0cf15f7" />
+    <None Include=".git\objects\87\9cba571b18674e0ab7a6e387c78e45954928fe" />
+    <None Include=".git\objects\90\570b5c6da84a664f35eacedb48f8b0ce89db61" />
+    <None Include=".git\objects\9f\c4da94d4e2a2d529f3c96b36db37a86e8b6629" />
+    <None Include=".git\objects\a0\fdf3206ff4c18d31e75d096ac3b410899e74f3" />
+    <None Include=".git\objects\a7\423760cb9bf77b4e126489a9df0dd7c02e333b" />
+    <None Include=".git\objects\a9\fb11f79b08583a647cdef30361e863d3597e3a" />
+    <None Include=".git\objects\ab\28db7f742bace1081c7645bdf24921a847c822" />
+    <None Include=".git\objects\b6\adab6844b1d7c4bb6548b9cece3fc7a7a86e94" />
+    <None Include=".git\objects\b7\b45ca8902d0593205f14956800c376eb3cc9ee" />
+    <None Include=".git\objects\b7\e729c01f69890d7137703a4640d73d3ee07749" />
+    <None Include=".git\objects\b8\4a543d455c6d0bac8885367acb395440dbc402" />
+    <None Include=".git\objects\be\06f55ede0cb63a81f797b1dbfc67dabd43d9b0" />
+    <None Include=".git\objects\c9\844556dd0041b2fb1e9a02e80eaaf2fa896a11" />
+    <None Include=".git\objects\cc\d4a73d8e88dd5295640999f63fd468ed8a2ad1" />
+    <None Include=".git\objects\cd\12db6f53a026e20bfa932bb2198213e542a803" />
+    <None Include=".git\objects\d2\6c7ae288f19b868be2f885dcb9d60be16f477d" />
+    <None Include=".git\objects\d8\a824d38934cc3a0930383915e26b4d1d3f3712" />
+    <None Include=".git\objects\da\a90a2bb9a6b27e777def0e76f396b7def9456c" />
+    <None Include=".git\objects\e7\37079391b7bb256b3d93bdbb131acdd288b812" />
+    <None Include=".git\objects\f3\0aebf0d00e3c9ebde02d96e74ba47ed765f10f" />
+    <None Include=".git\packed-refs" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include="bin.zip" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libmp3lame.32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libmp3lame.64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

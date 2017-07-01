@@ -1,0 +1,10 @@
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\obj\x86\Release\source-randomizer.csprojResolveAssemblyReference.cache
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\ConsoleApplication.exe
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\ConsoleApplication.pdb
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\NAudio.dll
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\NAudio.xml
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\obj\x86\Release\ConsoleApplication.exe
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\obj\x86\Release\ConsoleApplication.pdb
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\libmp3lame.32.dll
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\libmp3lame.64.dll
+C:\Users\Mister4Eyes\Desktop\Stuff\Git\Source-Randomizer\bin\Release\NAudio.Lame.dll
